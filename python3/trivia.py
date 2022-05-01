@@ -27,7 +27,7 @@ class Game:
     def is_playable(self):
         return self.how_many_players >= 2
 
-    def add(self, player_name):
+    def add_player(self, player_name):
         self.players.append(player_name)
         self.places[self.how_many_players] = 0
         self.purses[self.how_many_players] = 0
