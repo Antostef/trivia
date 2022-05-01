@@ -3,9 +3,9 @@
 class Game:
     def __init__(self):
         self.players = []
-        self.places = [0] * 6
-        self.purses = [0] * 6
-        self.in_penalty_box = [0] * 6
+        self.places = []
+        self.purses = []
+        self.in_penalty_box = []
 
         self.pop_questions = []
         self.science_questions = []
@@ -39,21 +39,25 @@ class Game:
         return 'Rock'
 
     def set_places(self):
-        self.places[self.how_many_players] = 0 
+        self.places = [0] * self.how_many_players
+        
         return True
 
     def set_purses(self):
-        self.purses[self.how_many_players] = 0
+        self.purses = [0] * self.how_many_players
+
         return True
     
     def set_in_penalty_box(self):
-        self.in_penalty_box[self.how_many_players] = False
+        self.in_penalty_box = [False] * self.how_many_players
+
         return True
 
     def setup(self):
         self.set_places()
         self.set_purses()
         self.set_in_penalty_box()
+
         return True
 
     def create_question(self, genre: str, index: int):
