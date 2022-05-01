@@ -21,6 +21,23 @@ class Game:
             self.sports_questions.append(self.create_question(genre='Sports', index=i))
             self.rock_questions.append(self.create_question(genre='Rock', index=i))
 
+    @property
+    def how_many_players(self):
+        return len(self.players)
+
+    @property
+    def _current_category(self):
+        if self.places[self.current_player] == 0: return 'Pop'
+        if self.places[self.current_player] == 4: return 'Pop'
+        if self.places[self.current_player] == 8: return 'Pop'
+        if self.places[self.current_player] == 1: return 'Science'
+        if self.places[self.current_player] == 5: return 'Science'
+        if self.places[self.current_player] == 9: return 'Science'
+        if self.places[self.current_player] == 2: return 'Sports'
+        if self.places[self.current_player] == 6: return 'Sports'
+        if self.places[self.current_player] == 10: return 'Sports'
+        return 'Rock'
+
     def create_question(self, genre: str, index: int):
         return f"{genre} Question {index}"
 
@@ -37,10 +54,6 @@ class Game:
         print("They are player number %s" % len(self.how_many_players))
 
         return True
-
-    @property
-    def how_many_players(self):
-        return len(self.players)
 
     def roll(self, roll):
         print("%s is the current player" % self.players[self.current_player])
@@ -79,19 +92,6 @@ class Game:
         if self._current_category == 'Science': print(self.science_questions.pop(0))
         if self._current_category == 'Sports': print(self.sports_questions.pop(0))
         if self._current_category == 'Rock': print(self.rock_questions.pop(0))
-
-    @property
-    def _current_category(self):
-        if self.places[self.current_player] == 0: return 'Pop'
-        if self.places[self.current_player] == 4: return 'Pop'
-        if self.places[self.current_player] == 8: return 'Pop'
-        if self.places[self.current_player] == 1: return 'Science'
-        if self.places[self.current_player] == 5: return 'Science'
-        if self.places[self.current_player] == 9: return 'Science'
-        if self.places[self.current_player] == 2: return 'Sports'
-        if self.places[self.current_player] == 6: return 'Sports'
-        if self.places[self.current_player] == 10: return 'Sports'
-        return 'Rock'
 
     def was_correctly_answered(self):
         if self.in_penalty_box[self.current_player]:
