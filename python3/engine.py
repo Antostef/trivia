@@ -9,6 +9,7 @@ if __name__ == '__main__':
     game.add_player('Chet')
     game.add_player('Pat')
     game.add_player('Sue')
+    game.setup()
 
     while True:
         game.roll(randrange(5) + 1)

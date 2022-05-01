@@ -38,6 +38,24 @@ class Game:
         if self.places[self.current_player] == 10: return 'Sports'
         return 'Rock'
 
+    def set_places(self):
+        self.places[self.how_many_players] = 0 
+        return True
+
+    def set_purses(self):
+        self.purses[self.how_many_players] = 0
+        return True
+    
+    def set_in_penalty_box(self):
+        self.in_penalty_box[self.how_many_players] = False
+        return True
+
+    def setup(self):
+        self.set_places()
+        self.set_purses()
+        self.set_in_penalty_box()
+        return True
+
     def create_question(self, genre: str, index: int):
         return f"{genre} Question {index}"
 
@@ -46,12 +64,9 @@ class Game:
 
     def add_player(self, player_name):
         self.players.append(player_name)
-        self.places[self.how_many_players]          = 0
-        self.purses[self.how_many_players]          = 0
-        self.in_penalty_box[self.how_many_players]  = False
 
         print(player_name + " was added")
-        print("They are player number %s" % len(self.how_many_players))
+        print(f"They are player number {self.how_many_players}")
 
         return True
 
